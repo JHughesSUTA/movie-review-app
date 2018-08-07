@@ -1,1 +1,7 @@
 <h1>Temp Index View</h1>
+
+<% @movies.each do |movie| %>
+  <h2><%= link_to movie.title, movie_path(movie) %></h2>
+<% end %>
+
+<%= link_to "Add Movie Review", new_movie_path %> 
