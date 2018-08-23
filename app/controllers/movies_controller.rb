@@ -10,10 +10,12 @@ class MoviesController < ApplicationController
 
   def new
     @movie = current_user.movies.build
+    @categories = Category.all.map{ |category| [category.name, category.id] }
   end
 
   def create
     @movie = current_user.movies.build(movie_params)
+    @movie.category_id = params[:category_id]
 
     if @movie.save
       redirect_to root_path
@@ -41,7 +43,7 @@ class MoviesController < ApplicationController
   private 
 
     def movie_params
-      params.require(:movie).permit(:title, :description, :director)
+      params.require(:movie).permit(:title, :description, :director, :category_id)
     end
 
     def find_movie
