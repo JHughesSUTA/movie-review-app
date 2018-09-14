@@ -4,6 +4,8 @@
   <h1>There are currently no movies in this category</h1>
 <% else %>  
   <% @movies.each do |movie| %>
-    <h2><%= link_to movie.title, movie_path(movie) %></h2>
+    <a href="/movies/<%= movie.id %>">
+      <%= image_tag movie.movie_img.url(:movie_index) %> <!-- movie_index corresponds to the size of book we want -->
+    </a>
   <% end %>
 <% end %> 
