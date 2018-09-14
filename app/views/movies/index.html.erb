@@ -3,9 +3,17 @@
 <% if @movies.count == 0 %>
   <h1>There are currently no movies in this category</h1>
 <% else %>  
-  <% @movies.each do |movie| %>
-    <a href="/movies/<%= movie.id %>">
-      <%= image_tag movie.movie_img.url(:movie_index) %> <!-- movie_index corresponds to the size of book we want -->
-    </a>
-  <% end %>
+  
+  <div class="row">
+    <% @movies.each do |movie| %>
+
+      <div class="col-md-3">
+        <a href="/movies/<%= movie.id %>">
+          <%= image_tag movie.movie_img.url(:movie_index), class: "movie" %> <!-- movie_index corresponds to the size of book we want -->
+        </a>
+      </div>
+
+    <% end %>
+  </div>
+
 <% end %> 
